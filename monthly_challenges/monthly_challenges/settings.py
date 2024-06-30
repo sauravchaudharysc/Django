@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'challenges',  #Allows one to add their own app, now django is aware of challenges app. 
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -54,7 +55,9 @@ ROOT_URLCONF = 'monthly_challenges.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [
+          #  BASE_DIR/"challenges"/"templates" If there is global templates for all file at home directory this is feasible 
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
