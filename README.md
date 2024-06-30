@@ -12,6 +12,13 @@ Django project follows a modular structure, so it consists of multiples modules.
 python3 manage.py startapp challenges
 
 What are URLs (or Routes) & Views ?
+URLs : Defining the URL to support. 
+Views : It can be a function or class which is executed for different URLs which contain code that handles(evaluates) requests and responses.
+Various url redirects to various pages. URL-Action mappings ensure that certain results are achieved when certain URLs are entered by the user. 
+
+
+Understanding Requests & Responses ?
+Delivering Content & Processing Input 
 
 
 
