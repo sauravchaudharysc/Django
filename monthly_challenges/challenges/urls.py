@@ -6,5 +6,6 @@ urlpatterns=[
     # path("february",views.february),
 
     #Dynamic path segment using placeholder
-    path("<month>",views.monthly_challenge)
+    path("<int:month>",views.monthly_challenge_by_number),
+    path("<str:month>",views.monthly_challenge)
 ]
