@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.http import HttpResponse,HttpResponseNotFound
+from django.http import HttpResponse,HttpResponseNotFound,HttpResponseRedirect
 
 # Create your views here.
 '''This function is executed by DJango when an incoming request is forwarded to it'''
@@ -26,26 +26,27 @@ monthly_challenges = {
     "december": "Acts of Kindness Challenge (Do a kind act every day)"
 }
 
+# def monthly_challenge_by_number(request,month):
+#     # A list of keys, dictionary are default ordered. First key in the dictionary will be first element in list. 
+#     try :
+#         challenge_text=monthly_challenges[list(monthly_challenges.keys())[month-1]]
+#     except :
+#         return HttpResponseNotFound("Error,Month not Present..!!")
+#     return HttpResponse(challenge_text)
+
 def monthly_challenge_by_number(request,month):
-    challenge_text=None
-    if month == 1:
-        challenge_text="Eat no meat for the entire month..!!"   
-    elif month == 2:
-        challenge_text="Celebrate Your Holiday..!!"    
-    elif month == 3:
-        challenge_text="Enjoy your vacation..!!"
-    else :
-        return HttpResponseNotFound("Error,Month not Present..!!") #Can be a html file
-    return HttpResponse(challenge_text)
+    months=list(monthly_challenges.keys())
+    if month>len(months):
+        return HttpResponseNotFound("Invalid Month")
+    redirect_month=months[month-1]
+    return HttpResponseRedirect("/challenges/"+redirect_month)
 
 
 
 
 #The second argument must be written same as identifier written in urls.py. This is also called Keyword argument
 def monthly_challenge(request,month):
-    print("Saurav ",month)
     try :
-        print(monthly_challenge)
         challenge_text=monthly_challenges[month]
     except :
         return HttpResponseNotFound("Error,Month not Present..!!") 
