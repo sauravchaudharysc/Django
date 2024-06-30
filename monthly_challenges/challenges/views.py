@@ -27,6 +27,24 @@ monthly_challenges = {
     "december": "Acts of Kindness Challenge (Do a kind act every day)"
 }
 
+
+
+def index(request):
+    months = list(monthly_challenges.keys())
+    list_items=""
+    for month in months:
+        capitalize_month=month.capitalize()
+        #Just jump back to urls.py and search for the one accepting args and gets the path
+        month_path=reverse('month-challenge',args=[month]) 
+        list_items+=f"<li><a href=\"{month_path}\">{capitalize_month}</a></li>"
+    response_data=f"<ol>{list_items}</ol>"   
+    return HttpResponse(response_data)
+
+
+
+
+
+
 # def monthly_challenge_by_number(request,month):
 #     # A list of keys, dictionary are default ordered. First key in the dictionary will be first element in list. 
 #     try :
@@ -50,6 +68,7 @@ def monthly_challenge_by_number(request,month):
 def monthly_challenge(request,month):
     try :
         challenge_text=monthly_challenges[month]
+        response_data = f"<h1>{challenge_text}</h1>"
     except :
         return HttpResponseNotFound("Error,Month not Present..!!") 
-    return HttpResponse(challenge_text)
+    return HttpResponse(response_data)
