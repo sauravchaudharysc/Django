@@ -57,6 +57,7 @@ TEMPLATES = [
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
           #  BASE_DIR/"challenges"/"templates" If there is global templates for all file at home directory this is feasible 
+          BASE_DIR / "templates"
         ],
         'APP_DIRS': True,
         'OPTIONS': {
