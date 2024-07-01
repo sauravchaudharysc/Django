@@ -32,15 +32,9 @@ monthly_challenges = {
 
 def index(request):
     months = list(monthly_challenges.keys())
-    list_items=""
-    for month in months:
-        capitalize_month=month.capitalize()
-        #Just jump back to urls.py and search for the one accepting args and gets the path
-        month_path=reverse('month-challenge',args=[month]) 
-        list_items+=f"<li><a href=\"{month_path}\">{capitalize_month}</a></li>"
-    response_data=f"<ol>{list_items}</ol>"   
-    return HttpResponse(response_data)
-
+    return render(request,'challenges/index.html',{
+        "months":months
+    })
 
 
 
@@ -71,7 +65,7 @@ def monthly_challenge(request,month):
         challenge_text=monthly_challenges[month]
         return render(request,'challenges/challenge.html',{
             "text":challenge_text,
-            "month_name":month.capitalize()
+            "month_name":month
         })
     except :
         return HttpResponseNotFound("Error,Month not Present..!!") 
