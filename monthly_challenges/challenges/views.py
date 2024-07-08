@@ -1,7 +1,8 @@
 from django.shortcuts import render
-from django.http import HttpResponse,HttpResponseNotFound,HttpResponseRedirect
+from django.http import Http404,HttpResponseNotFound,HttpResponseRedirect
 from django.urls import reverse
 from django.template.loader import render_to_string
+
 
 # Create your views here.
 '''This function is executed by DJango when an incoming request is forwarded to it'''
@@ -68,5 +69,7 @@ def monthly_challenge(request,month):
             "month_name":month
         })
     except :
-        return HttpResponseNotFound("Error,Month not Present..!!") 
+        # response_data=render_to_string('404.html')
+        # return HttpResponseNotFound(response_data) #No need to give the whole path because its path is defined in root settings.py
+        raise Http404() #This is also a way to return 404 error and for this need 404.html in templates folder
      
