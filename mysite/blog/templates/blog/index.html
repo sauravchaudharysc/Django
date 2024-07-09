@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}My Blog{% endblock %}
+{% block css_files %}
+    <link rel="stylesheet" href="{% static "blog/post.css" %}" />
+    <link rel="stylesheet" href="{% static "blog/index.css" %}" />
+{% endblock %}
+{% block content %}
+    
+    <section id="welcome">
+        <header>
+            <img src="{% static "blog/images/max.jpg" %}" alt="Sachin - The Author Of This Blog" />
+            <h2>SACHIN'S BLOG</h2>
+        </header>
+        <p>Welcome to my blog. I am Sachin, a doctor by profession and a blogger by passion. I love to write about technology, programming, and other stuff. I hope you will enjoy reading my blog posts.</p>
+    </section>
+
+    <section id="latest-posts">
+        <h2>My Latest Posts</h2>
+        <ul>
+            {% for post in posts %}
+               {% include "blog/includes/post.html" %}
+            {% endfor %}
+        </ul>
+    </section>
+
+    <section id="about">
+        <h2>What I do</h2>
+        <p>I am a doctor by profession and a blogger by passion. I love to write about technology, programming, and other stuff. I hope you will enjoy reading my blog posts.</p>
+        <p>
+            My goal is to share my knowledge and experience with others and help them learn new things. I believe that everyone has something valuable to offer, and I want to help people realize their full potential.
+        </p>
+    </section>
+{% endblock %}
