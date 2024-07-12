@@ -1,6 +1,3 @@
-Sure! Here's a properly formatted README for Django, encapsulated within a black box for easy copying:
-
-````markdown
 # Django
 
 Django is a Python web development framework. It handles everything that happens on the server (remote computer) that accepts incoming requests and sends responses, running the entire business logic. A framework is a module (third-party library) that provides a bunch of utility functions, so a developer doesn't need to focus on the nitty-gritty details. Django is built for Python 3.x and follows a "batteries included" approach, offering built-in solutions and features for almost all problems.
