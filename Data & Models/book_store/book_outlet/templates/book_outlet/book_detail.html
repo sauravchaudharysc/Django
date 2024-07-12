@@ -3,9 +3,13 @@
 {% block title %} {{ title }} {% endblock %}
 
 {% block content %}
-    <ul>
-        {% for book in books %}
-            <li>{{ book.title }} - (Rating : {{ book.rating }})</li>
-        {% endfor %}
-    </ul>
+    <h1> {{title}} </h1>
+    <h2> {{author}} </h2>
+    <p>The book has a rating of {{rating}}
+        {% if is_bestseller %}
+            and is a bestseller.
+        {% else %}
+            and is not a bestseller.
+        {% endif %}
+    </p>
 {% endblock %}
